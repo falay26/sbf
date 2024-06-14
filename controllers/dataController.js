@@ -16,7 +16,7 @@ const writeData = async (req, res) => {
         message: "Veri daha önce kaydedildi!",
       });
     } else {
-      day.stocks.stock = object;
+      day.stocks[stock] = object;
       await day.save();
       res.status(200).json({
         status: 200,
