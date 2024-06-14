@@ -17,6 +17,7 @@ const writeData = async (req, res) => {
       });
     } else {
       day.stocks[stock] = object;
+      await day.markModified("stocks");
       await day.save();
       res.status(200).json({
         status: 200,
