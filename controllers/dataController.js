@@ -1,5 +1,18 @@
 const Day = require("../model/Day");
 
+const getDatas = async (req, res) => {
+  try {
+    const days = await Day.find();
+    res.status(200).json({
+      status: 200,
+      data: days,
+      message: "Veriler başarıyla döndürüldü!",
+    });
+  } catch (err) {
+    res.status(500).json({ status: 500, message: err.message });
+  }
+};
+
 const writeData = async (req, res) => {
   const { date, stock, object } = req.body;
 
@@ -30,4 +43,4 @@ const writeData = async (req, res) => {
   }
 };
 
-module.exports = { writeData };
+module.exports = { getDatas, writeData };
